@@ -1,5 +1,5 @@
 package _04_Snake;
-
+//CONTINUE LINE 58
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -32,18 +32,30 @@ public class Snake {
 	}
 
 	public void update() {
-
+		int nextX = head.getLocation().getX();
+		int nextY = head.getLocation().getY();
 		/*
 		 * Create variables for the next X and Y location of the snake's head.
 		 * Initialize them to the current X and Y locations.
 		 */
+		switch (currentDirection) {
+		case UP:
+			nextY--;
+			break;
+		case DOWN:
+			nextY++;
+			break;
+		case LEFT:
+			nextX--;
+			break;
+		case RIGHT:
+			nextX++;
+			break;
+		}
+		head.getLocation().setX(nextX);
+		head.getLocation().setY(nextY);
 
-		/*
-		 * Use a switch statement to check on the currentDirection of the snake and
-		 * calculate the head's next x and y position. Depending on the direction, the
-		 * variables you created may increase or decrease by 1.
-		 */
-
+//CONTINUE HERE YOU APRICOT
 		/*
 		 * Change the Location of each SnakeSegment in your snake ArrayList to the
 		 * Location of the segment in front of it.

@@ -11,31 +11,44 @@ public class IntroToEncapsulation {
 		 */
 
 		// 1. Create a Vehicle object.
-
+		Vehicle nyoomer = new Vehicle();
 		// 2. Use the vehicle's setters to change fuelTankCapacity and mpg.
-
+nyoomer.fuelTankCapacity=12;
+nyoomer.mpg=8;
 		// 3. Call setFuelInTank with an amount greater than the capacity.
-
+nyoomer.setFuelInTank(15);
 		// Note: The reason setFuelInTank doesn't show up is because it's private.
 
 		// 4. Modify setFuelInTank's access modifier so you can use it.
 		// Hint: Access modifiers are described at the top of the Vehicle class.
 
 		// 5. Create a setter for the vehicle's color then set its color using it.
-
+nyoomer.setColor("red");
 		// 6. Create local variables for fuelTankCapacity, fuelInTank and mpg.
-
+int fuelCap;
+int fuelInTank;
+int mpg;
+fuelCap=nyoomer.getFuelTankCapacity();
+fuelInTank=nyoomer.getFuelInTank();
+mpg=nyoomer.getMpg();
 		// 7. Use the vehicle's getters to initialize all of them.
 		// Note: You may need to fix some access modifiers.
-
+String color;
+color=nyoomer.getColor();
 		// 8. Create a getter for color and do the same thing you did for steps 6 & 7.
 
 		// 9. Print out all the local variables.
-
+System.out.println("Fuel Capacity: "+fuelCap);
+System.out.println("Fuel Stored: "+fuelInTank);
+System.out.println("Fuel Efficiency: "+mpg+" mpg");
+System.out.println("Color: "+color);
 		// 10. If you haven't already, completely encapsulate the Vehicle class.
 		// Hint: Make all member variables private and all getters/setters public.
 
 		// 11. Drive the vehicle until it runs out of gas.
+while(nyoomer.getFuelInTank()>0) {
+	nyoomer.drive();
+}
 	}
 
 }
@@ -77,7 +90,7 @@ class Vehicle {
 		}
 	}
 
-	private void setFuelInTank(int fuelInTank) {
+	public void setFuelInTank(int fuelInTank) {
 		if (fuelInTank >= 0 && fuelInTank <= fuelTankCapacity) {
 			this.fuelInTank = fuelInTank;
 		} else {
@@ -85,14 +98,21 @@ class Vehicle {
 			this.fuelInTank = fuelTankCapacity;
 		}
 	}
+	
+	public void setColor(String color) {
+		this.color=color;
+	}
+	public String getColor() {
+		return color;
+	}
 
 	// A getter returns a member variable.
 
-	private int getFuelTankCapacity() {
+	public int getFuelTankCapacity() {
 		return fuelTankCapacity;
 	}
 
-	private int getFuelInTank() {
+	public int getFuelInTank() {
 		return fuelInTank;
 	}
 
