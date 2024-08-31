@@ -168,7 +168,7 @@ Random ran = new Random();
 		 * Create a new Location object that is set to a random x and y values between 0
 		 * and the WIDTH and HEIGHT variables respectively.
 		 */
-		Location futureFood = new Location(ran.nextInt(WIDTH+1),ran.nextInt(HEIGHT+1));
+		Location futureFood = new Location(ran.nextInt(WIDTH),ran.nextInt(HEIGHT));
 		if(!snake.isLocationOnSnake(futureFood)) {
 			foodLocation=futureFood;
 		} else {randomizeFoodLocation();}
@@ -211,17 +211,20 @@ Random ran = new Random();
 
 		// Call the snake's update method.
 snake.update();
-		/*
+System.out.println("Head Location: "+snake.getHeadLocation().getX()+", "+snake.getHeadLocation().getY());
+System.out.println("Food Location: "+foodLocation.getX()+", "+foodLocation.getY());
+
+/*
 		 * If the snake's head is colliding with its own body or out of bounds call the
 		 * gameOver method.
 		 */
-if(snake.isHeadCollidingWithBody()) {gameOver();}
+if(snake.isHeadCollidingWithBody()||snake.isOutOfBounds()) {gameOver();}
 
 		/*
 		 * If the location of the snake's head is equal to the location of the food,
 		 * feed the snake and randomize the food location.
 		 */
-if(snake.getHeadLocation()==foodLocation) {snake.feed();randomizeFoodLocation();}
+if(snake.getHeadLocation().atSame(foodLocation)) {snake.feed();randomizeFoodLocation();}
 		panel.repaint();
 	}
 }
